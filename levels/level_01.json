@@ -1,0 +1,23 @@
+{
+	"name": "Level 1",
+	"rings": [
+		{
+			"radius_index": 0,
+			"speed": 0.25,
+			"direction": 1,
+			"glasses": ["blau", "blau", "rot", "blau", "", "blau", "blau", "blau", "rot", "blau", "", "blau"]
+		},
+		{
+			"radius_index": 1,
+			"speed": 0.2,
+			"direction": -1,
+			"glasses": ["blau", "rot", "blau", "gelb", "blau", "", "blau", "blau", "rot", "blau", "", "blau", "blau", "gelb", "blau", ""]
+		},
+		{
+			"radius_index": 2,
+			"speed": 0.15,
+			"direction": 1,
+			"glasses": ["blau", "blau", "rot", "blau", "", "blau", "gold", "blau", "", "blau", "blau", "rot", "blau", "blau", "", "blau", "gelb", "blau", "blau", ""]
+		}
+	]
+}

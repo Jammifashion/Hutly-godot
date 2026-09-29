@@ -33,12 +33,19 @@ func _ready() -> void:
 	_setup_button(btn_play, "SPIELEN", Config.COLOR_YELLOW, Config.MENU_PLAY_SIZE, Config.MENU_PLAY_FONT_SIZE)
 	_setup_button(btn_hutregal, "HUTREGAL", Config.COLOR_WHITE, Config.MENU_BUTTON_SIZE, Config.MENU_BUTTON_FONT_SIZE)
 	_setup_button(btn_settings, "EINSTELLUNGEN", Config.COLOR_WHITE, Config.MENU_BUTTON_SIZE, Config.MENU_BUTTON_FONT_SIZE)
-	btn_play.pressed.connect(Transition.go_to.bind(Config.SCENE_GAME))
+	btn_play.pressed.connect(_on_play)
 	btn_hutregal.pressed.connect(Transition.go_to.bind(Config.SCENE_HUTREGAL))
 	btn_settings.pressed.connect(Transition.go_to.bind(Config.SCENE_SETTINGS))
 
 	get_viewport().size_changed.connect(_layout)
 	_layout()
+
+
+func _on_play() -> void:
+	if Transition.is_busy():
+		return
+	GameState.start_run()
+	Transition.go_to(Config.SCENE_GAME)
 
 
 func _setup_button(b: ComicButton, label: String, color: Color, min_size: Vector2, fs: int) -> void:

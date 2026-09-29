@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="-72 -72 144 144"><g><circle cx="5" cy="7" r="62" fill="#000" opacity=".28"/>
+<circle r="60" fill="#3A3A3A" stroke="#1b1b1b" stroke-width="7"/>
+<circle r="52" fill="none" stroke="#6a6a6a" stroke-width="4"/>
+<polyline points="38.0,0.0 45.8,10.5 34.2,16.5 36.7,29.3 23.7,29.7 20.4,42.3 8.5,37.0 0.0,47.0 -8.5,37.0 -20.4,42.3 -23.7,29.7 -36.7,29.3 -34.2,16.5 -45.8,10.5 -38.0,0.0 -45.8,-10.5 -34.2,-16.5 -36.7,-29.3 -23.7,-29.7 -20.4,-42.3 -8.5,-37.0 -0.0,-47.0 8.5,-37.0 20.4,-42.3 23.7,-29.7 36.7,-29.3 34.2,-16.5 45.8,-10.5 38.0,-0.0" fill="none" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
+<circle r="30" fill="#222" stroke="#1b1b1b" stroke-width="6"/>
+<path d="M -20,-8 A 22 22 0 0 1 -6,-22" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".85"/>
+<circle cx="2" cy="4" r="14" fill="#111" stroke="#1b1b1b" stroke-width="3"/><path d="M 10,-6 Q 18,-18 12,-24" fill="none" stroke="#C8A165" stroke-width="4"/><path d="M 12,-24 l 5,-6 l -1,7 l 7,-2 l -6,5 l 6,4 l -8,-1 z" fill="#F5C518" stroke="#1b1b1b" stroke-width="1.5"/><circle cx="-3" cy="-1" r="4" fill="#fff" opacity=".7"/></g></svg>

@@ -20,8 +20,29 @@ Godot 4.7 (GDScript), 2D, Hochformat. Ziel: Android & iOS.
   Farben, Zeiten und Spielwerte. Keine Magic Numbers in anderen Skripten.
 - `ui/` – wiederverwendbare UI-Bausteine (ComicButton, ScorePill, Hearts, Sunburst, Theme, Font)
 - `autoload/` – `GameState` (Spielstand), `Transition` (Szenenwechsel mit Wisch-Ueberblendung)
+- `levels/` – Level-Daten `level_XX.json` (Format siehe unten)
 - `assets/` – Comic-SVGs, importiert mit `svg/scale=2.0` (+ Mipmaps).
   Sprite-Skalierung daher immer `gewuenschte_px / (svg_masse * Config.SVG_IMPORT_SCALE)`.
+
+## Level-Format (`levels/level_XX.json`)
+```json
+{ "rings": [ { "radius_index": 0, "speed": 0.25, "direction": 1,
+               "glasses": ["blau", "", "rot", "gelb", "gold"] } ] }
+```
+- `radius_index` → Radius = `RING_FIRST_RADIUS + index * RING_SPACING` (config.gd)
+- `speed` in rad/s, `direction` 1 / -1; benachbarte Ringe muessen gegenlaeufig drehen
+  (sonst Warnung im Log).
+- `glasses`: Glastyp-IDs aus `Config.GLASS_TYPES`, `""` = leerer Platz. Plaetze werden
+  gleichmaessig auf den Ring verteilt.
+- Fehlt ein Level, laedt `LevelLoader` das hoechste vorhandene darunter (Warnung).
+- Beim ersten Android/iOS-Export pruefen, dass `levels/*.json` im Paket landen
+  (sonst `*.json` im Export-Filter ergaenzen).
+
+## Spielablauf (Code-Aufteilung)
+- `game.gd` – Eingabe, Tropfen-Bewegung + Kollision (Swept-Circle gegen Glaeser), Effekte, Levelende
+- `ring_field.gd` – alle Ringe, Druck nach innen, Gefahrenlinie, Treffer/Platzen/Sieg-Signale
+- `glass_ring.gd`, `glass.gd` – Ring bzw. einzelnes Glas (Fuellstand, Badge, Wackeln, Platzen)
+- `GameState`: `start_run()` (Menue), `begin_level()` (Szenenstart), `retry_level()`, `next_level()`
 
 ## Konventionen
 - Szenenwechsel nur ueber `Transition.go_to(Config.SCENE_...)`.
@@ -37,6 +58,8 @@ Godot 4.7 (GDScript), 2D, Hochformat. Ziel: Android & iOS.
 
 ## Stand
 - Schritt 1: Hauptmenue, Platzhalter-Screens, Spielszene-Prototyp (Zielen, Schuss, HUD).
-- Schritt 2 (offen): Glaeser, Ringe, Punkte-Logik.
-- Schrift ist aktuell eine SystemFont (Arial Black / Impact / Fallback). Fuer Mobilgeraete
-  spaeter eine eigene Comic-Schrift (TTF/OTF) in `ui/` einbinden.
+- Schritt 2: Glaeser, Ringe (JSON), Trefferlogik, Druck & Herzen, Sieg-/Game-Over-Screen.
+- Schrift: „Bangers“ (Google Fonts, SIL OFL, `ui/fonts/OFL.txt`), eingebunden ueber
+  `ui/comic_font.tres` (FontVariation) und das Projekt-Theme. Neue Texte immer ueber
+  diese Resource, keine SystemFont.
+- Fuer spaeter vorhanden, noch nicht benutzt: `assets/hut_bombe|eis|party|gold.svg`.

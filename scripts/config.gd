@@ -136,3 +136,95 @@ const START_LEVEL := 1
 const TRANSITION_TIME := 0.28              # s pro Haelfte
 const TRANSITION_SKEW := 360.0             # px Schraege der Wischkante
 const TRANSITION_EDGE := 34.0              # gelbe Kante
+
+# --- Glaeser --------------------------------------------------------------
+const GLASS_DIAMETER := 88.0               # px auf dem Spielfeld (= Kollisionskreis)
+const GLASS_SVG_DIAMETER := 74.0           # Glas-Kreis inkl. Kontur im SVG
+const GLASS_LIQUID_MAX_RATIO := 0.7        # max. Fluessigkeitsradius / Glasradius
+const GLASS_LIQUID_TIME := 0.25
+const GLASS_BADGE_RADIUS := 21.0
+const GLASS_BADGE_OFFSET := Vector2(0.72, -0.72) # in Glasradien, oben rechts
+const GLASS_BADGE_FONT_SIZE := 32
+const GLASS_HIT_SQUASH := Vector2(1.28, 0.78)
+const GLASS_HIT_IN_TIME := 0.05
+const GLASS_HIT_OUT_TIME := 0.4
+const GLASS_POP_TIME := 0.18
+const GLASS_POP_SCALE := 1.6
+# Typ-ID = Name in den Level-JSONs
+const GLASS_TYPES := {
+	"blau": {"hits": 1, "points": 10, "color": Color("2F7CF6"), "texture": "res://assets/glas_blau.svg"},
+	"rot": {"hits": 3, "points": 50, "color": Color("E8322A"), "texture": "res://assets/glas_rot.svg"},
+	"gelb": {"hits": 5, "points": 100, "color": Color("F5C518"), "texture": "res://assets/glas_gelb.svg"},
+	"gold": {"hits": 10, "points": 250, "color": Color("E0A100"), "texture": "res://assets/glas_gold.svg"},
+}
+
+# --- Ringe / Level --------------------------------------------------------
+const LEVEL_PATH_FORMAT := "res://levels/level_%02d.json"
+const RING_FIRST_RADIUS := 340.0           # Radius-Index 0 (Glasmitte)
+const RING_SPACING := 100.0                # ~ 1 Glasdurchmesser
+
+# --- Druck & Herzen -------------------------------------------------------
+const PRESSURE_SPEED := 3.0                # px/s, alle Ringe gemeinsam nach innen
+const PRESSURE_START_DELAY := 1.5          # s nach Levelstart
+const PRESSURE_PUSHBACK := 120.0           # px nach aussen bei Beruehrung
+const PRESSURE_PUSHBACK_TIME := 0.5
+const DANGER_COOLDOWN := 1.0               # s Schutz nach Herzverlust
+
+# --- Effekte --------------------------------------------------------------
+const SPLASH_COUNT := 7
+const SPLASH_SPEED := 380.0
+const SPLASH_RADIUS := 9.0
+const SPLASH_LIFETIME := 0.35
+const POP_SPLASH_COUNT := 14
+const POP_SPLASH_SPEED := 620.0
+const BUBBLE_FONT_SIZE := 64
+const BUBBLE_PADDING := Vector2(34, 16)
+const BUBBLE_BORDER := 6
+const BUBBLE_OFFSET := Vector2(0, -95)
+const BUBBLE_TAIL := 42.0
+const BUBBLE_TILT_DEG := 8.0
+const BUBBLE_IN_TIME := 0.2
+const BUBBLE_HOLD_TIME := 0.6
+const BUBBLE_OUT_TIME := 0.2
+const BUBBLE_TEXT_PROST := "PROST!"
+const BUBBLE_TEXT_SCHLUCK := "SCHLUCK!"
+const FLY_SCORE_FONT_SIZE := 64
+const FLY_SCORE_OUTLINE := 16
+const FLY_SCORE_TIME := 0.7
+const FLY_SCORE_ARC := 180.0               # px Bogen nach oben
+const SCORE_BUMP_SCALE := 1.2
+const SCORE_BUMP_TIME := 0.25
+const COLOR_FLASH := Color("FF1E1E")
+const EDGE_FLASH_WIDTH := 110.0
+const EDGE_FLASH_ALPHA := 0.75
+const EDGE_FLASH_TIME := 0.55
+const CONFETTI_COUNT := 150
+const CONFETTI_SIZE := Vector2(22, 12)
+const CONFETTI_FALL_SPEED := Vector2(260, 520) # min/max px/s
+const CONFETTI_SWAY := 60.0
+const CONFETTI_COLORS: Array[Color] = [Color("E8322A"), Color("F5C518"), Color("2F7CF6"), Color("2E9E4F"), Color("FFFFFF")]
+
+# --- Ergebnis-Screens -----------------------------------------------------
+const RESULT_DIM := Color(0, 0, 0, 0.55)
+const RESULT_CARD_WIDTH := 820.0
+const RESULT_CARD_PADDING := 60.0
+const RESULT_TITLE_FONT_SIZE := 120
+const RESULT_LABEL_FONT_SIZE := 54
+const RESULT_SCORE_FONT_SIZE := 130
+const RESULT_BUTTON_SIZE := Vector2(520, 130)
+const RESULT_BUTTON_FONT_SIZE := 64
+const RESULT_GAP := 36.0
+const RESULT_IN_TIME := 0.35
+const RESULT_DELAY_WIN := 1.1              # > FLY_SCORE_TIME, damit Punkte angekommen sind
+const RESULT_DELAY_LOSE := 0.7
+const RESULT_TEXT_WIN := "GESCHAFFT!"
+const RESULT_TEXT_LOSE := "GAME OVER"
+const RESULT_TEXT_POINTS := "PUNKTE"
+const RESULT_TEXT_NEXT := "WEITER"
+const RESULT_TEXT_RETRY := "NOCHMAL"
+const RESULT_TEXT_MENU := "MENÜ"
+const STAR_SIZE := 140.0
+const STAR_GAP := 26.0
+const STAR_DELAY := 0.25
+const STAR_POP_TIME := 0.3
+const COLOR_STAR_EMPTY := Color("5A6B80")

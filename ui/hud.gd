@@ -1,9 +1,13 @@
+class_name Hud
 extends Control
 ## Obere Leiste im Spiel: LEVEL links, Punkte-Pill mittig, Herzen rechts.
 
 @onready var level_label: Label = $LevelLabel
 @onready var score_pill: ScorePill = $ScorePill
 @onready var hearts: Hearts = $Herzen
+
+var _edge_flash: EdgeFlash
+var _bump_tween: Tween
 
 
 func _ready() -> void:
@@ -22,8 +26,32 @@ func _ready() -> void:
 	hearts.filled = GameState.lives
 	_set_level(GameState.level)
 
+	_edge_flash = EdgeFlash.new()
+	add_child(_edge_flash)
+
 	get_viewport().size_changed.connect(_layout)
 	_layout()
+
+
+## Laesst Punkte von screen_pos zur Punkteanzeige fliegen und zaehlt sie dort.
+func fly_points(screen_pos: Vector2, points: int) -> void:
+	var f := FlyingScore.new()
+	f.setup(screen_pos, score_pill.position + score_pill.size * 0.5, points)
+	f.arrived.connect(_on_points_arrived)
+	add_child(f)
+
+
+func flash_edge() -> void:
+	_edge_flash.flash()
+
+
+func _on_points_arrived(points: int) -> void:
+	GameState.score += points
+	if _bump_tween:
+		_bump_tween.kill()
+	score_pill.scale = Vector2.ONE * Config.SCORE_BUMP_SCALE
+	_bump_tween = create_tween()
+	_bump_tween.tween_property(score_pill, "scale", Vector2.ONE, Config.SCORE_BUMP_TIME) 		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 
 func _set_level(v: int) -> void:
@@ -38,6 +66,7 @@ func _layout() -> void:
 	level_label.position = Vector2(side, top)
 	level_label.size = Vector2(vs.x * 0.35, h)
 	score_pill.size = Config.SCORE_PILL_SIZE
+	score_pill.pivot_offset = Config.SCORE_PILL_SIZE * 0.5
 	score_pill.position = Vector2((vs.x - Config.SCORE_PILL_SIZE.x) * 0.5,
 		top + (h - Config.SCORE_PILL_SIZE.y) * 0.5)
 	hearts.position = Vector2(vs.x * 0.65, top)

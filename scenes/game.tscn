@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_game"]
 [ext_resource type="Script" path="res://scripts/boden_holz.gd" id="2_boden"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://ui/hud.gd" id="7_hud"]
 [ext_resource type="Script" path="res://ui/score_pill.gd" id="8_score"]
 [ext_resource type="Script" path="res://ui/hearts.gd" id="9_hearts"]
+[ext_resource type="Script" path="res://scripts/ring_field.gd" id="10_rings"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_game")
@@ -20,6 +21,9 @@ script = ExtResource("2_boden")
 
 [node name="GefahrenRing" type="Node2D" parent="World"]
 script = ExtResource("3_ring")
+
+[node name="Ringe" type="Node2D" parent="World"]
+script = ExtResource("10_rings")
 
 [node name="Hut" type="Sprite2D" parent="World"]
 texture = ExtResource("4_hut")
@@ -33,6 +37,8 @@ script = ExtResource("5_aim")
 
 [node name="Flasche" type="Sprite2D" parent="World/FlaschePivot"]
 texture = ExtResource("6_flasche")
+
+[node name="Effekte" type="Node2D" parent="World"]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

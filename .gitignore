@@ -4,3 +4,5 @@
 *.tmp
 # Export-Presets koennen Keystore-Passwoerter enthalten
 export_presets.cfg
+*.exe
+*.zip

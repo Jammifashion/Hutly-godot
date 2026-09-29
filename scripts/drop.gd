@@ -1,16 +1,17 @@
 class_name ComicDrop
 extends Node2D
-## Comic-Tropfen: fliegt geradeaus entlang seiner Rotation (+x).
+## Comic-Tropfen. Bewegung und Kollision steuert game.gd (step),
+## der Tropfen selbst kuemmert sich nur um Aussehen und Lebensdauer.
 
-var direction := Vector2.RIGHT
+var velocity := Vector2.ZERO
 var _age := 0.0
 var _shape := PackedVector2Array()
 
 
 func setup(start: Vector2, dir: Vector2) -> void:
 	position = start
-	direction = dir.normalized()
-	rotation = direction.angle()
+	velocity = dir.normalized() * Config.DROP_SPEED
+	rotation = dir.angle()
 	scale = Vector2.ZERO
 
 
@@ -28,15 +29,14 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_age += delta
-	position += direction * Config.DROP_SPEED * delta
 	var pop := minf(1.0, _age / Config.DROP_POP_TIME)
 	var wob := sin(_age * Config.DROP_WOBBLE_SPEED) * Config.DROP_WOBBLE
 	scale = Vector2(1.0 + wob, 1.0 - wob) * pop
-	if _age > Config.DROP_LIFETIME or _is_off_screen():
+	if _age > Config.DROP_LIFETIME or is_off_screen():
 		queue_free()
 
 
-func _is_off_screen() -> bool:
+func is_off_screen() -> bool:
 	var vs := get_viewport_rect().size
 	var m := Config.DROP_RADIUS * Config.DROP_TAIL * 2.0
 	return position.x < -m or position.y < -m or position.x > vs.x + m or position.y > vs.y + m
