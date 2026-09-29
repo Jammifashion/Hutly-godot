@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="120" viewBox="-140 -56 300 116"><g>
+<path d="M -118,-44 H 40 Q 70,-44 88,-22 H 128 V 22 H 88 Q 70,44 40,44 H -118 Q -132,44 -132,30 V -30 Q -132,-44 -118,-44 Z" transform="translate(6,8)" fill="#000" opacity=".3"/>
+<path d="M -118,-44 H 40 Q 70,-44 88,-22 H 128 V 22 H 88 Q 70,44 40,44 H -118 Q -132,44 -132,30 V -30 Q -132,-44 -118,-44 Z" fill="#2E9E4F" stroke="#1b1b1b" stroke-width="8" stroke-linejoin="round"/>
+<path d="M -118,14 H 40 Q 62,14 78,0" fill="none" stroke="#1E7338" stroke-width="16" opacity=".8" transform="translate(0,18)"/>
+<rect x="-96" y="-34" width="104" height="68" rx="8" fill="#FFF1C2" stroke="#1b1b1b" stroke-width="6"/>
+<text x="-44" y="-4" font-family="Arial Black,Arial" font-weight="900" font-size="22" text-anchor="middle" fill="#E8322A">HUT</text>
+<text x="-44" y="22" font-family="Arial Black,Arial" font-weight="900" font-size="15" text-anchor="middle" fill="#1b1b1b">IST GUT</text>
+<path d="M -120,-28 H 40" stroke="#9BF0B4" stroke-width="7" stroke-linecap="round"/>
+<rect x="120" y="-26" width="30" height="52" rx="7" fill="#F5C518" stroke="#1b1b1b" stroke-width="7"/>
+<path d="M 128,-18 V 18" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+</g></svg>

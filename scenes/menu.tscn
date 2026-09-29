@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_menu"]
+[ext_resource type="Script" path="res://ui/sunburst.gd" id="2_sun"]
+[ext_resource type="Texture2D" path="res://assets/hut.svg" id="3_hut"]
+[ext_resource type="Texture2D" path="res://assets/flasche.svg" id="4_flasche"]
+[ext_resource type="Script" path="res://ui/comic_button.gd" id="5_btn"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Sonnenstrahlen" type="Node2D" parent="."]
+position = Vector2(540, 820)
+script = ExtResource("2_sun")
+
+[node name="Titel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 400.0
+text = "HUT IST
+GUT!"
+
+[node name="HutGruppe" type="Node2D" parent="."]
+position = Vector2(540, 820)
+
+[node name="Hut" type="Sprite2D" parent="HutGruppe"]
+texture = ExtResource("3_hut")
+
+[node name="Flasche" type="Sprite2D" parent="HutGruppe"]
+texture = ExtResource("4_flasche")
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 1230.0
+offset_right = 1080.0
+offset_bottom = 1730.0
+
+[node name="Spielen" type="BaseButton" parent="Buttons"]
+layout_mode = 2
+script = ExtResource("5_btn")
+
+[node name="Hutregal" type="BaseButton" parent="Buttons"]
+layout_mode = 2
+script = ExtResource("5_btn")
+
+[node name="Einstellungen" type="BaseButton" parent="Buttons"]
+layout_mode = 2
+script = ExtResource("5_btn")

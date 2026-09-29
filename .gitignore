@@ -1,0 +1,6 @@
+# Godot 4
+.godot/
+/android/
+*.tmp
+# Export-Presets koennen Keystore-Passwoerter enthalten
+export_presets.cfg

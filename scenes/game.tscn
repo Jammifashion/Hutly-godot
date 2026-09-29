@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_game"]
+[ext_resource type="Script" path="res://scripts/boden_holz.gd" id="2_boden"]
+[ext_resource type="Script" path="res://scripts/danger_ring.gd" id="3_ring"]
+[ext_resource type="Texture2D" path="res://assets/hut.svg" id="4_hut"]
+[ext_resource type="Script" path="res://scripts/aim_line.gd" id="5_aim"]
+[ext_resource type="Texture2D" path="res://assets/flasche.svg" id="6_flasche"]
+[ext_resource type="Script" path="res://ui/hud.gd" id="7_hud"]
+[ext_resource type="Script" path="res://ui/score_pill.gd" id="8_score"]
+[ext_resource type="Script" path="res://ui/hearts.gd" id="9_hearts"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_game")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Boden" type="Node2D" parent="World"]
+script = ExtResource("2_boden")
+
+[node name="GefahrenRing" type="Node2D" parent="World"]
+script = ExtResource("3_ring")
+
+[node name="Hut" type="Sprite2D" parent="World"]
+texture = ExtResource("4_hut")
+
+[node name="Ziellinie" type="Node2D" parent="World"]
+script = ExtResource("5_aim")
+
+[node name="Tropfen" type="Node2D" parent="World"]
+
+[node name="FlaschePivot" type="Node2D" parent="World"]
+
+[node name="Flasche" type="Sprite2D" parent="World/FlaschePivot"]
+texture = ExtResource("6_flasche")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Hud" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_hud")
+
+[node name="LevelLabel" type="Label" parent="HUD/Hud"]
+layout_mode = 0
+text = "LEVEL 1"
+
+[node name="ScorePill" type="Control" parent="HUD/Hud"]
+layout_mode = 0
+mouse_filter = 2
+script = ExtResource("8_score")
+
+[node name="Herzen" type="Control" parent="HUD/Hud"]
+layout_mode = 0
+mouse_filter = 2
+script = ExtResource("9_hearts")
